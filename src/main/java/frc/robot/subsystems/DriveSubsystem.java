@@ -28,7 +28,7 @@ public class DriveSubsystem extends SubsystemBase{
         leftMotors = new MotorControllerGroup(leftFrontMotor, leftBackMotor);
         rightMotors = new MotorControllerGroup(rightFrontMotor, rightBackMotor);
 
-        rightMotors.setInverted(false);
+        rightMotors.setInverted(true);
 
         robotDrive = new DifferentialDrive(leftMotors, rightMotors);
     }
