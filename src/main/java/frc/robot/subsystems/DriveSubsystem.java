@@ -4,6 +4,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class DriveSubsystem extends SubsystemBase{
@@ -27,7 +28,7 @@ public class DriveSubsystem extends SubsystemBase{
         leftMotors = new MotorControllerGroup(leftFrontMotor, leftBackMotor);
         rightMotors = new MotorControllerGroup(rightFrontMotor, rightBackMotor);
 
-        rightMotors.setInverted(true);
+        rightMotors.setInverted(false);
 
         robotDrive = new DifferentialDrive(leftMotors, rightMotors);
     }
@@ -37,5 +38,10 @@ public class DriveSubsystem extends SubsystemBase{
     }
 
     @Override
-    public void periodic() {}
+    public void periodic() {
+        SmartDashboard.putNumber("Left Front Motor", leftFrontMotor.get());
+        SmartDashboard.putNumber("Left Back Motor", leftBackMotor.get());
+        SmartDashboard.putNumber("Right Front Motor", rightFrontMotor.get());
+        SmartDashboard.putNumber("Right Back Motor", rightBackMotor.get());
+    }
 }

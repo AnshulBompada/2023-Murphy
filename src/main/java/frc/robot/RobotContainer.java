@@ -23,7 +23,7 @@ public class RobotContainer {
     controller = new CommandXboxController(0);
 
     robotDrive.setDefaultCommand(new ArcadeCommand( 
-      () -> controller.getLeftY(),
+      () -> -controller.getLeftY(),
       () -> controller.getRightX(),
       robotDrive
     ));
@@ -34,12 +34,12 @@ public class RobotContainer {
   private void configureBindings() {
     // Rotate out
     controller.y().whileTrue(new InstantCommand( () -> {
-      robotOuttake.rotateOuttake(1);
+      robotOuttake.rotateOuttake(1, 90);
     }));
 
     // Rotate in
     controller.a().whileTrue(new InstantCommand( () -> {
-      robotOuttake.rotateOuttake(-1);
+      robotOuttake.rotateOuttake(-1,0);
     }));
   }
 
